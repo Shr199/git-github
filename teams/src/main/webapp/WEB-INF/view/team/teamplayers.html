@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" 
+    xmlns:th="http://www.thymeleaf.org" 
+    xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+  <title>Team Data</title>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <link th:replace="fragments/header :: link"/>
+  <script th:replace="fragments/header :: script"></script>
+</head>
+<body>
+
+<div th:replace="fragments/header :: header">Header</div>
+
+
+  
+<div class="container">
+
+<table>
+<thead>
+<th>Name</th>
+</thead>
+<tbody>
+<tr th:each="player : ${teamplayerlist}">
+<td th:text="${player.name}"></td>
+</tr>
+</tbody>
+</table>
+<form action="/teamplayers/add" method="post">
+<input type="hidden" name="teamid" th:value="${teamid}"/>
+  <div class="col-xs-3">
+    <label for="name">Players List:</label>
+    
+    <select name="teamplayers" >
+    	<option th:each="player : ${playerlist}"
+                            th:value="${player.playerid}"
+                            th:text="${player.name}"/>
+    </select> 
+  </div>  
+ <div class="col-xs-3">
+  <input type="submit" class="btn btn-primary" value="Add Team Players"/></div>
+</form>
+  </div>
+
+</body>
+</html>

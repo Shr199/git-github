@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" 
+    xmlns:th="http://www.thymeleaf.org" 
+    xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+  <title>Home Page</title>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <link th:replace="fragments/header :: link"/>
+  <script th:replace="fragments/header :: script"></script>
+</head>
+<body>
+
+<div th:replace="fragments/header :: header">Header</div>
+  
+<div class="container">
+<div class="p-3 mb-2 bg-warning text-dark"><h1>Players Data</h1></div>
+<h1 th:text="${res}">hello</h1>
+<form action="/player/add" method="post">
+ <div class="col-xs-3">
+    <label for="name">Name:</label>
+    <input type="text" class="form-control" name="name" id="name"/>  
+  </div>
+  <input type="submit" class="btn btn-primary" value="submit"/>
+</form>
+
+<table class="table table-bordered" width="100%"  cellspacing="0">
+    <thead>
+    <tr>
+        <th>id</th>
+        <th>name</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="player : ${playerlist}">
+        <td th:text="${player.playerid}"></td>
+        <td th:text="${player.name}"></td>
+    </tr>
+    </tbody>
+</table>
+</div>
+
+</body>
+</html>
+
+
+
+ 

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" 
+    xmlns:th="http://www.thymeleaf.org" 
+    xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+  <title>Team Data</title>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <link th:replace="fragments/header :: link"/>
+  <script th:replace="fragments/header :: script"></script>
+</head>
+<body>
+
+<div th:replace="fragments/header :: header">Header</div>
+
+
+  
+<div class="container"></div>
+<div class="p-3 mb-2 bg-warning text-dark"><h1>Team Data</h1></div>
+<form action="/teamdata/add" method="post">
+
+ <div class="col-xs-3">
+    <label for="name">Name:</label>
+    <input type="text" class="form-control" id="name" name="teamname" />  
+  </div>
+  
+  
+   <div class="col-xs-3">
+    <label for="name">User:</label>
+    
+    <select name="users" >
+    	<option th:each="user : ${userlist}"
+                            th:value="${user.id}"
+                            th:text="${user.email}"/>
+    </select> 
+  </div>
+  <input type="submit" value="Add Team" class="btn btn-primary" />
+  
+   <input type="submit" value="Delete Team" class="btn btn-primary" />
+  
+ 
+</form>
+
+<table class="table table-bordered" width="100%"  cellspacing="0">
+    <thead>
+    <tr>
+        <th>Team Name</th>
+        <th>User name</th>
+        <th>Players</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="team : ${teamlist}">
+        <td th:text="${team.teamname}"></td>
+         <td th:text="${team.users!=null?team.users.email:''}"></td>
+         <td><a th:href="${'/teamplayers/'+team.teamid}">Players</a></td>
+    </tr>
+   
+    
+ 
+ 
+   </tbody>
+</table>
+      
+
+
+</body>
+</html>
+
+
+
+ 

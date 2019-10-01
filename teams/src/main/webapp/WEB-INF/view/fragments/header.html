@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+    xmlns:th="http://www.thymeleaf.org" 
+    xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<meta charset="ISO-8859-1"/>
+<title>Insert title here</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"/>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<nav th:fragment="header" class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">   
+      <a class="navbar-brand" href="#">Teams</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="/home">Home</a></li>
+      <li><a href="/playerdata">Players</a></li>
+      <li><a href="/teamdata">Teams</a></li>
+    </ul>
+   
+   <a href="/Registrationform" class="btn btn-primary btn-sm" style="float:right; margin: 13px 12px 12px 10px;">Sign Up
+ </a>
+ 
+    
+ 
+   
+ 
+        
+ </div>
+</nav>
+</body>
+</html>
